@@ -1,3 +1,4 @@
 tests/artifacts/
 node_modules/
 __pycache__/
+StudyOS_*_HTML_only.zip
