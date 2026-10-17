@@ -1,0 +1,5 @@
+[
+  "PASS — Primary hover resets, selected navigation persists, keyboard focus is visible, task more menu keyboard controls work, failed storage save retains input and retry saves exactly once",
+  "PASS — Disabled assessment navigation is visually distinct and cannot operate",
+  "PASS — Reduced-motion preference disables route transitions"
+]

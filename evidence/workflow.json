@@ -1,0 +1,11 @@
+{
+  "clock": "Playwright fixed Date; original timer math; +60 seconds, +120 paused seconds, +30 seconds, then remaining countdown",
+  "results": [
+    "PASS — Add task: English required-title error, Enter/IME guard, keyboard submit creates exactly one task",
+    "PASS — Edit keeps task ID and original text; completion and Undo work",
+    "PASS — 50:00 start; 60 s countdown; 120 s paused adds no time; Resume/Exit focus view/navigation keep the same session",
+    "PASS — Refresh restores paused session; active parameter changes require the original confirmation and cannot reset it silently",
+    "PASS — Natural completion retains remaining work, Ready to save agrees across Today/Focus/header, save writes one session with unchanged ID, reload preserves task and record",
+    "PASS — Manual Finish from paused state records 1.5 min; duplicate submit saves once; explicit task completion and Undo retain both session records"
+  ]
+}
