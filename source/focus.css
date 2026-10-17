@@ -1,0 +1,47 @@
+
+/* Focus presentation consumes the shared shell and controls. Timer data never
+   drives a continuous animation; only explicit layout changes transition. */
+:root { --focus-transition:220ms; --focus-ease:cubic-bezier(.2,.7,.2,1); }
+.app-main[data-screen="focus"] .focus-layout {
+  transition:grid-template-columns var(--focus-transition) var(--focus-ease),gap var(--focus-transition) var(--focus-ease);
+}
+.focus-support {
+  overflow:hidden;max-height:1400px;
+  transition:opacity var(--focus-transition) ease,transform var(--focus-transition) var(--focus-ease),max-height var(--focus-transition) var(--focus-ease),visibility 0s;
+}
+.focus-support>.card { width:var(--aside-width);max-width:none; }
+.focus-main { min-width:0; }
+.focus-clock-card { min-height:500px;transition:border-color var(--focus-transition) ease; }
+.focus-state { align-self:center; }
+.focus-state .icon { width:13px;height:13px; }
+#app .focus-clock-card .focus-task-label { max-width:760px;margin:24px auto 0; }
+.focus-session-meta { display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:12px;margin-top:8px; }
+.focus-session-meta>span+span { border-left:1px solid var(--color-line);padding-left:12px; }
+.focus-clock-display { display:flex;justify-content:center;max-width:100%; }
+.focus-time { font-variant-numeric:tabular-nums lining-nums;font-feature-settings:"tnum";text-align:center;min-width:6ch;letter-spacing:-.04em; }
+.focus-clock-card .focus-btns { gap:12px; }
+#app .focus-pause-note { min-height:18px;margin-top:16px;text-align:center; }
+.app-main[data-screen="focus"] .pagehead [data-action="session-history"],
+.global-nav,.global-tools { transition:opacity var(--focus-transition) ease,visibility 0s; }
+.is-focus-immersive .global-nav,.is-focus-immersive .global-tools,
+.is-focus-immersive .mobile-bottom,
+.is-focus-immersive .pagehead [data-action="session-history"] {
+  opacity:0;visibility:hidden;pointer-events:none;transition:opacity var(--focus-transition) ease,visibility 0s linear var(--focus-transition);
+}
+.is-focus-immersive .app-main[data-screen="focus"] .focus-layout { grid-template-columns:minmax(0,1fr) 0px;gap:0; }
+.is-focus-immersive .focus-support {
+  opacity:0;transform:translateX(12px);max-height:0;visibility:hidden;pointer-events:none;
+  transition:opacity var(--focus-transition) ease,transform var(--focus-transition) var(--focus-ease),max-height var(--focus-transition) var(--focus-ease),visibility 0s linear var(--focus-transition);
+}
+.is-focus-immersive .focus-clock-card { border-color:transparent;background:var(--surface-content); }
+.is-focus-immersive .focus-main>.card:not(.focus-clock-card) { max-width:760px;width:100%;margin-inline:auto; }
+.is-focus-immersive .footer-note { visibility:hidden; }
+@media(max-width:900px){
+  .focus-support>.card { width:100%; }
+  .is-focus-immersive .app-main[data-screen="focus"] .focus-layout { grid-template-columns:minmax(0,1fr); }
+}
+@media(prefers-reduced-motion:reduce){
+  :root { --focus-transition:0ms; }
+  .focus-support,.focus-layout,.focus-clock-card,.global-nav,.global-tools { transition:none!important;transform:none; }
+}
+

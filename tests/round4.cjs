@@ -1,0 +1,27 @@
+const {launch,open,route,fixture,assert,fs}=require('./helpers.cjs');
+(async()=>{const b=await launch(),p=await open(b);const out=[];
+try{
+  assert.equal(await p.locator('#today-add-task').isVisible(),false);
+  assert.equal(await p.locator('.atelier-empty h3').textContent(),'No tasks yet');
+  assert.equal(await p.locator('.atelier-empty p').textContent(),'Add your first task for today.');
+  assert.equal(await p.locator('[data-action="new-task"]:visible').filter({hasText:'Add task'}).count(),1);
+  assert.equal(await p.locator('.getting-started [data-action="new-task"]').count(),0);
+  assert.equal(await p.locator('.atelier-heading [data-action="v4-life"]').count(),0);
+  await p.locator('#v6-task-search').fill('no result');
+  assert.equal(await p.locator('.atelier-empty h3').textContent(),'No matching tasks');
+  assert.equal(await p.locator('#today-add-task').isVisible(),true);
+  await p.locator('[data-action="v6-clear-filter"]').click();
+  assert.equal(await p.locator('#today-add-task').isVisible(),false);
+  await fixture(p,3);await p.evaluate(()=>{state.settings.guideDismissed=false;render();});
+  assert((await p.locator('.getting-started').textContent()).includes('2 of 3'));
+  await p.locator('[data-action="v8-guide-skip-time"]').click();
+  assert((await p.locator('.getting-started').textContent()).includes('3 of 3'));
+  await p.locator('[data-action="dismiss-guide-hint"]').click();await p.reload();
+  assert.equal(await p.locator('.getting-started').count(),0);
+  await p.evaluate(()=>{state.tasks.forEach(t=>setTaskCompletion(t,true));persist();render();});
+  await p.locator('[data-action="v6-filter"][data-filter="pending"]').click();
+  assert.equal(await p.locator('.atelier-empty h3').textContent(),'All tasks complete');
+  await p.locator('[data-action="v6-clear-filter"]').click();assert.equal(await p.locator('.atelier-task').count(),3);
+  out.push('PASS: distinct first-use/search-no-results/all-completed states; one empty-state Add task; no duplicate Availability; guide steps/optional skip/dismiss persistence');
+  fs.writeFileSync('tests/artifacts/round4.json',JSON.stringify(out,null,2));console.log(out);
+}finally{await b.close();}})().catch(e=>{console.error(e);process.exitCode=1});

@@ -1,0 +1,8 @@
+
+/* Shared by the workspace and extension blocking page. */
+:root {
+  --interaction:#315cdb; --interaction-hover:#2549b8; --interaction-pressed:#1e3d99;
+  --selected-bg:#d9e8ff; --selected-ink:#2347ae; --control-border:#8a8f99;
+  --focus-ring:#315cdb40; --color-error:#b42318; --surface-error:#fff4f2;
+}
+

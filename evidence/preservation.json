@@ -1,0 +1,6 @@
+[
+  "PASS — Open 0.0.22 over isolated 0.0.21 storage: all state, task/session/step IDs, notes, settings, notebook records and image bytes unchanged",
+  "PASS — Full backup exported through Settings and restored into a separate empty browser context, including image content; reload preserves restored data",
+  "PASS — Inline HTML remains functional with networking disabled after load",
+  "PASS — 16 modules and 13 timer/storage functions byte-identical; original S mark and storage schema retained"
+]

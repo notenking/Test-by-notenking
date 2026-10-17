@@ -1,0 +1,6 @@
+/* Functional icon sizes; navigation layout and interaction live in product.css. */
+:root{--icon-stroke:1.75;--nav-icon-size:20px}
+.studyos-icon{display:block;flex:0 0 auto}
+.global-link>.studyos-icon{width:var(--nav-icon-size);height:var(--nav-icon-size)}
+.studyos-icon[data-icon^="nav-"]{color:var(--ink)}
+.studyos-icon .nav-accent{stroke:var(--interaction)}

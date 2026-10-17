@@ -1,0 +1,5 @@
+[
+  "PASS — 1366x768 @ 1×: empty/10 tasks/long mixed title/paused/all-done, More, Planner sidebar, Focus, Review, Settings; 20px nav icons and 15px task text; aligned actions; no overflow or JS errors",
+  "PASS — 1440x900 @ 1×: empty/10 tasks/long mixed title/paused/all-done, More, Planner sidebar, Focus, Review, Settings; 20px nav icons and 15px task text; aligned actions; no overflow or JS errors",
+  "PASS — 1920x1080 @ 1×: empty/10 tasks/long mixed title/paused/all-done, More, Planner sidebar, Focus, Review, Settings; 20px nav icons and 15px task text; aligned actions; no overflow or JS errors"
+]
